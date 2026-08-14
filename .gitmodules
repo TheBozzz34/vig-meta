@@ -1,0 +1,15 @@
+[submodule "vig-bytecode"]
+	path = vig-bytecode
+	url = https://github.com/TheBozzz34/vig-bytecode
+[submodule "vig-assembler"]
+	path = vig-assembler
+	url = https://github.com/TheBozzz34/vig-assembler
+[submodule "vig-linker"]
+	path = vig-linker
+	url = https://github.com/TheBozzz34/vig-linker
+[submodule "vig"]
+	path = vig
+	url = https://github.com/TheBozzz34/vig
+[submodule "vigcc"]
+	path = vigcc
+	url = https://github.com/TheBozzz34/vigcc

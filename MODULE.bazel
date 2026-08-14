@@ -1,0 +1,42 @@
+module(
+    name = "vig_project",
+    version = "0.1.0",
+)
+
+bazel_dep(name = "rules_zig", version = "0.16.0")
+bazel_dep(name = "vig", version = "0.0.0")
+bazel_dep(name = "vig_assembler", version = "0.1.0")
+bazel_dep(name = "vig_bytecode", version = "0.1.0")
+bazel_dep(name = "vig_linker", version = "0.1.0")
+bazel_dep(name = "vigcc", version = "0.1.0")
+
+# Keep each component independently buildable while composing their live
+# checkouts into one graph from this integration repository.
+local_path_override(
+    module_name = "vig",
+    path = "vig",
+)
+
+local_path_override(
+    module_name = "vig_assembler",
+    path = "vig-assembler",
+)
+
+local_path_override(
+    module_name = "vig_bytecode",
+    path = "vig-bytecode",
+)
+
+local_path_override(
+    module_name = "vig_linker",
+    path = "vig-linker",
+)
+
+local_path_override(
+    module_name = "vigcc",
+    path = "vigcc",
+)
+
+zig = use_extension("@rules_zig//zig:extensions.bzl", "zig")
+zig.index(file = "@vig_bytecode//:zig-index.json")
+zig.toolchain(zig_version = "0.17.0-dev.1543+6db520a4c")

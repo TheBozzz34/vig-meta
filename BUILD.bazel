@@ -1,0 +1,53 @@
+package(default_visibility = ["//visibility:public"])
+
+alias(
+    name = "vig",
+    actual = "@vig//:vig",
+)
+
+alias(
+    name = "vig_stats",
+    actual = "@vig//:vig_stats",
+)
+
+alias(
+    name = "vigasm",
+    actual = "@vig_assembler//:vigasm",
+)
+
+alias(
+    name = "vigld",
+    actual = "@vig_linker//:vigld",
+)
+
+alias(
+    name = "vigcc",
+    actual = "@vigcc//:vigcc",
+)
+
+alias(
+    name = "bench",
+    actual = "@vigcc//:bench",
+)
+
+filegroup(
+    name = "toolchain",
+    srcs = [
+        ":vig",
+        ":vig_stats",
+        ":vigasm",
+        ":vigcc",
+        ":vigld",
+    ],
+)
+
+test_suite(
+    name = "tests",
+    tests = [
+        "@vig//:tests",
+        "@vig_assembler//:tests",
+        "@vig_bytecode//:tests",
+        "@vig_linker//:tests",
+        "@vigcc//:tests",
+    ],
+)
