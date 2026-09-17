@@ -13,3 +13,6 @@
 [submodule "vigcc"]
 	path = vigcc
 	url = https://github.com/TheBozzz34/vigcc
+[submodule "vig-ide"]
+	path = vig-ide
+	url = git@github.com:TheBozzz34/vig-ide.git
