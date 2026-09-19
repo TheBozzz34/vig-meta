@@ -4,11 +4,23 @@ module(
 )
 
 bazel_dep(name = "rules_zig", version = "0.16.0")
+
+# The built-in translate-c rule invokes Zig through run_shell. Preserve each
+# argument as one shell word so Windows paths such as "C:/Program Files/..."
+# are not split by Git Bash.
+single_version_override(
+    module_name = "rules_zig",
+    version = "0.16.0",
+    patches = ["//:rules_zig_quote_translate_c_arguments.patch"],
+    patch_strip = 1,
+)
+
 bazel_dep(name = "vig", version = "0.0.0")
 bazel_dep(name = "vig_assembler", version = "0.1.0")
 bazel_dep(name = "vig_bytecode", version = "0.1.0")
 bazel_dep(name = "vig_linker", version = "0.1.0")
 bazel_dep(name = "vigcc", version = "0.1.0")
+bazel_dep(name = "vig_ide", version = "0.1.0")
 
 # Keep each component independently buildable while composing their live
 # checkouts into one graph from this integration repository.
@@ -35,6 +47,11 @@ local_path_override(
 local_path_override(
     module_name = "vigcc",
     path = "vigcc",
+)
+
+local_path_override(
+    module_name = "vig_ide",
+    path = "vig-ide",
 )
 
 zig = use_extension("@rules_zig//zig:extensions.bzl", "zig")

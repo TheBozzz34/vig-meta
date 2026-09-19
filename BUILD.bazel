@@ -26,6 +26,11 @@ alias(
 )
 
 alias(
+    name = "vigide",
+    actual = "@vig_ide//:vigide",
+)
+
+alias(
     name = "bench",
     actual = "@vigcc//:bench",
 )
@@ -37,6 +42,7 @@ filegroup(
         ":vig_stats",
         ":vigasm",
         ":vigcc",
+        ":vigide",
         ":vigld",
     ],
 )
@@ -49,5 +55,6 @@ test_suite(
         "@vig_bytecode//:tests",
         "@vig_linker//:tests",
         "@vigcc//:tests",
+        "@vig_ide//:tests",
     ],
 )

@@ -35,6 +35,10 @@ bazelisk run //:vigasm -- --help
 bazelisk run //:vigld -- --help
 bazelisk run //:vigcc -- --help
 bazelisk run //:bench -- loop
+bazelisk run //:vigide
 ```
 
 Every component can also still be built and tested from its own directory.
+
+The workspace is pinned to Bazel 8.4.2, which is compatible with the current
+`rules_zig` dependency graph on Windows.
